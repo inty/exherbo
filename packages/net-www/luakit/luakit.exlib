@@ -1,0 +1,36 @@
+# vim: ft=sh
+# Copyright (C) 2010 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU General Public License v3
+
+export_exlib_phases src_unpack src_prepare
+
+SUMMARY="luakit is a highly configurable, micro-browser framework based on the WebKit web content engine and the GTK+ toolkit"
+DESCRIPTION="
+It is very fast, extensible by Lua and licensed under the GNU GPLv3 license.
+It is primarily targeted at power users, developers and any people with too
+much time on their hands who want to have fine-grained control over their
+web browsers behaviour and interface.
+"
+
+HOMEPAGE="http://luakit.org/projects/luakit/"
+DOWNLOADS="http://github.com/mason-larobina/luakit/tarball/${PV} -> luakit-${PV}.tar.gz"
+
+LICENCES="GPL-3"
+SLOT="0"
+
+DEPENDENCIES="
+  net-libs/webkit-gtk[>=1.2.4]
+  dev-lang/lua
+"
+
+BUGS_TO="mattias.fliesberg@gmail.com"
+
+luakit_src_unpack() {
+  tar xzf "${FETCHEDDIR}/${ARCHIVES}" -C "${WORKBASE}" || die
+  mv ${WORKBASE}/*luakit* ${WORKBASE}/luakit-${PV}
+}
+
+luakit_src_prepare() {
+  default
+  sed -i "s/PREFIX[ ]\+?=.*/PREFIX ?= \/usr/" ${WORKBASE}/luakit-${PV}/config.mk
+}
