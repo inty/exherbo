@@ -5,14 +5,17 @@
 require perl-module [ module_author=RUTSCHLE ]
 
 SUMMARY="UserAgent for the RememberTheMilk API"
+DESCRIPTION="
+WebService::RTMAgent implements the low-level API to the
+www.rememberthemilk.com Web service.
+"
 
 HOMEPAGE="http://search.cpan.org/dist/WebService-RTMAgent/"
 
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS=""
 
-DEPENDENCIES+="
+DEPENDENCIES="
   dev-perl/XML-Simple
 "
 
