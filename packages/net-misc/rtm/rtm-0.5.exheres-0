@@ -1,0 +1,36 @@
+# vim: ft=sh
+# Copyright (C) 2010 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU General Public License v3
+
+PLATFORMS="~amd64"
+
+SUMMARY="Remember The Milk command line tool"
+DESCRIPTION="
+"
+
+HOMEPAGE="http://www.rutschle.net/rtm/"
+DOWNLOADS="http://www.rutschle.net/rtm/rtm-${PV}.gz"
+
+SLOT="0"
+
+DEPENDENCIES="
+  dev-perl/WebService-RTMAgent
+"
+
+BUGS_TO="mattias.fliesberg@gmail.com"
+
+src_unpack() {
+  mkdir "${WORKBASE}/rtm-${PV}"
+  gunzip -c "${FETCHEDDIR}/${ARCHIVES}" > "${WORKBASE}/rtm-${PV}/rtm" || die
+}
+
+src_prepare() {
+  # remove annoying perl warnings
+  sed -i "s/^\(#\! \/usr\/bin\/perl\) -w/\1/" "${WORKBASE}/rtm-${PV}/rtm"
+}
+
+src_install() {
+  exeinto /usr/bin
+  doexe rtm
+}
+
