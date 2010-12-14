@@ -16,10 +16,14 @@ LICENCES="GPL-3"
 SLOT="0"
 
 DEPENDENCIES="
-  dev-perl/IPC-Run3
-  dev-lang/perl
-  dev-perl/Time-Duration
-  dev-perl/TimeDate
+  build+run:
+    dev-perl/IPC-Run3
+    dev-lang/perl
+    dev-perl/Time-Duration
+    dev-perl/TimeDate
+  build:
+    app-text/docbook2X
+    app-text/docbook-xml-dtd
 "
 
 BUGS_TO="mattias.fliesberg@gmail.com"
@@ -28,3 +32,4 @@ moreutils_src_unpack() {
   tar xzf "${FETCHEDDIR}/${ARCHIVES}" -C "${WORKBASE}" || die
   mv ${WORKBASE}/moreutils ${WORKBASE}/moreutils-${PV}
 }
+
