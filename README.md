@@ -12,6 +12,6 @@ Exheres packages for luakit, rtm, moreutils etc.
 Dependencies
 -----------
 
-Here are some other repos that some packages on these repo depends on.
+Here are some other repos that some packages in this repo depends on.
 
-  - https://github.com/gregf/exherbo-gregf
+  - [https://github.com/gregf/exherbo-gregf](https://github.com/gregf/exherbo-gregf) (moreutils)
