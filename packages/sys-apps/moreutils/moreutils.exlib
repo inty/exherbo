@@ -36,4 +36,6 @@ moreutils_src_unpack() {
 moreutils_src_prepare() {
   default
   sed -i "s/^DOCBOOK2XMAN=docbook2x-man$/DOCBOOK2XMAN=docbook2man/" ${WORKBASE}/moreutils-${PV}/Makefile
+  sed -i "s/^\"file:\/\/\/usr\/share\/xml\/docbook\/schema\/dtd\/4\.4\/docbookx\.dtd\"$/\"\/usr\/share\/sgml\/docbook\/xml-dtd-4.5\/docbookx.dtd\"/" \
+    ${WORKBASE}/moreutils-${PV}/*.docbook
 }
