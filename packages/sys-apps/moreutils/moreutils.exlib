@@ -2,6 +2,8 @@
 # Copyright (C) 2010 Mattias Fliesberg <mattias.fliesberg@gmail.com>
 # Distributed under the terms of the GNU General Public License v3
 
+export_exlib_phases src_unpack
+
 SUMMARY="additional Unix utilities"
 DESCRIPTION="
 This is a growing collection of the Unix tools that nobody thought to write long ago, when Unix was young.
@@ -22,3 +24,7 @@ DEPENDENCIES="
 
 BUGS_TO="mattias.fliesberg@gmail.com"
 
+moreutils_src_unpack() {
+  tar xzf "${FETCHEDDIR}/${ARCHIVES}" -C "${WORKBASE}" || die
+  mv ${WORKBASE}/moreutils ${WORKBASE}/moreutils-${PV}
+}
