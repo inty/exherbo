@@ -27,6 +27,6 @@ DEFAULT_SRC_CONFIGURE_PARAMS=(
 dictd_src_install() {
   default
   rm -r "${IMAGE}"/usr/lib64 "${IMAGE}"/usr/libexec
-  mkdir "${IMAGE}"/etc/dict/
+  mkdir -p "${IMAGE}"/etc/dict/
   echo "server localhost\nserver dict.org" > "${IMAGE}"/etc/dict/dict.conf
 }
