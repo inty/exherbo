@@ -20,6 +20,10 @@ DEPENDENCIES="
 
 BUGS_TO="mattias.fliesberg@gmail.com"
 
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+  --sysconfdir=/etc/dict
+)
+
 dictd_src_install() {
   default
   edo rm -r "${IMAGE}"/usr/lib64 "${IMAGE}"/usr/libexec
