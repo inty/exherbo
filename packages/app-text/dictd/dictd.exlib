@@ -28,5 +28,5 @@ dictd_src_install() {
   default
   rm -r "${IMAGE}"/usr/lib64 "${IMAGE}"/usr/libexec
   mkdir -p "${IMAGE}"/etc/dict/
-  echo "server localhost\nserver dict.org" > "${IMAGE}"/etc/dict/dict.conf
+  echo -e "server localhost\nserver dict.org" > "${IMAGE}"/etc/dict/dict.conf
 }
