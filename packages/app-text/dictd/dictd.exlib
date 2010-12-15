@@ -2,6 +2,8 @@
 # Copyright (C) 2010 Mattias Fliesberg <mattias.fliesberg@gmail.com>
 # Distributed under the terms of the GNU General Public License v3
 
+export_exlib_phases src_install
+
 SUMMARY="Client/server software, human language dictionary databases, and tools supporting the DICT protocol (RFC 2229)."
 DESCRIPTION="
 "
@@ -18,3 +20,7 @@ DEPENDENCIES="
 
 BUGS_TO="mattias.fliesberg@gmail.com"
 
+dictd_src_install() {
+  default
+  edo rm -r "${IMAGE}"/usr/lib64 "${IMAGE}"/usr/libexec
+}
