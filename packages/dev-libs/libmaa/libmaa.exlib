@@ -2,18 +2,17 @@
 # Copyright (C) 2010 Mattias Fliesberg <mattias.fliesberg@gmail.com>
 # Distributed under the terms of the GNU General Public License v3
 
-SUMMARY="Client/server software, human language dictionary databases, and tools supporting the DICT protocol (RFC 2229)."
+SUMMARY="Library with low-level data structures which are helpful for writing compilers"
 DESCRIPTION="
 "
 
 HOMEPAGE="http://www.dict.org/"
-DOWNLOADS="mirror://sourceforge/dict/dictd-${PV}.tar.gz"
+DOWNLOADS="mirror://sourceforge/dict/libmaa-${PV}.tar.gz"
 
 LICENCES="GPL-3"
 SLOT="0"
 
 DEPENDENCIES="
-  dev-libs/libmaa
 "
 
 BUGS_TO="mattias.fliesberg@gmail.com"
