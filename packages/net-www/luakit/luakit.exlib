@@ -13,7 +13,7 @@ web browsers behaviour and interface.
 "
 
 HOMEPAGE="http://luakit.org/projects/luakit/"
-DOWNLOADS="http://github.com/mason-larobina/luakit/tarball/${PV} -> luakit-${PV}.tar.gz"
+DOWNLOADS="http://github.com/mason-larobina/luakit/tarball/${PVR} -> luakit-${PVR}.tar.gz"
 
 LICENCES="GPL-3"
 SLOT="0"
@@ -27,10 +27,10 @@ BUGS_TO="mattias.fliesberg@gmail.com"
 
 luakit_src_unpack() {
   tar xzf "${FETCHEDDIR}/${ARCHIVES}" -C "${WORKBASE}" || die
-  mv ${WORKBASE}/*luakit* ${WORKBASE}/luakit-${PV}
+  mv ${WORKBASE}/*luakit* ${WORKBASE}/luakit-${PVR}
 }
 
 luakit_src_prepare() {
   default
-  sed -i "s/PREFIX[ ]\+?=.*/PREFIX ?= \/usr/" ${WORKBASE}/luakit-${PV}/config.mk
+  sed -i "s/PREFIX[ ]\+?=.*/PREFIX ?= \/usr/" ${WORKBASE}/luakit-${PVR}/config.mk
 }
