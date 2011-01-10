@@ -20,6 +20,7 @@ SLOT="0"
 DEPENDENCIES="
   net-libs/webkit-gtk[>=1.2.4]
   dev-lang/lua
+  dev-lua/luafilesystem
 "
 
 BUGS_TO="mattias.fliesberg@gmail.com"
