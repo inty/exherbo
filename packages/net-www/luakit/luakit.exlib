@@ -29,7 +29,7 @@ luakit_src_fetch_extra() {
 }
 
 luakit_src_unpack() {
-  tar xzf "${FETCHEDDIR}/${ARCHIVES}" -C "${WORKBASE}" || die
+  tar xzf "${FETCHEDDIR}/luakit-${PVR}.tar.gz" -C "${WORKBASE}" || die
   mv ${WORKBASE}/*luakit* ${WORKBASE}/luakit-${PVR}
 }
 
