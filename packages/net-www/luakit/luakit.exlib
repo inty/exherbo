@@ -30,11 +30,11 @@ luakit_src_fetch_extra() {
 
 luakit_src_unpack() {
   tar xzf "${FETCHEDDIR}/luakit-${PVR}.tar.gz" -C "${WORKBASE}" || die
-  mv ${WORKBASE}/*luakit* ${WORKBASE}/luakit-${PVR}
+  mv ${WORKBASE}/*luakit* ${WORKBASE}/luakit-${PV}
 }
 
 luakit_src_prepare() {
   default
-  sed -i "s/PREFIX[ ]\+?=.*/PREFIX ?= \/usr/" ${WORKBASE}/luakit-${PVR}/config.mk
+  sed -i "s/PREFIX[ ]\+?=.*/PREFIX ?= \/usr/" ${WORKBASE}/luakit-${PV}/config.mk
 }
 
