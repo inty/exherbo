@@ -2,7 +2,7 @@
 # Copyright (C) 2010 Mattias Fliesberg <mattias.fliesberg@gmail.com>
 # Distributed under the terms of the GNU General Public License v3
 
-export_exlib_phases src_unpack src_prepare
+export_exlib_phases src_unpack src_prepare src_fetch_extra
 
 SUMMARY="luakit is a highly configurable, micro-browser framework based on the WebKit web content engine and the GTK+ toolkit"
 DESCRIPTION="
@@ -13,7 +13,6 @@ web browsers behaviour and interface.
 "
 
 HOMEPAGE="http://luakit.org/projects/luakit/"
-DOWNLOADS="http://github.com/mason-larobina/luakit/tarball/${PVR} -> luakit-${PVR}.tar.gz"
 
 LICENCES="GPL-3"
 SLOT="0"
@@ -25,6 +24,10 @@ DEPENDENCIES="
 
 BUGS_TO="mattias.fliesberg@gmail.com"
 
+luakit_src_fetch_extra() {
+  edo wget --no-check-certificate -O "${FETCHEDDIR}"/luakit-${PVR}.tar.gz http://github.com/mason-larobina/luakit/tarball/${PVR}
+}
+
 luakit_src_unpack() {
   tar xzf "${FETCHEDDIR}/${ARCHIVES}" -C "${WORKBASE}" || die
   mv ${WORKBASE}/*luakit* ${WORKBASE}/luakit-${PVR}
@@ -34,3 +37,4 @@ luakit_src_prepare() {
   default
   sed -i "s/PREFIX[ ]\+?=.*/PREFIX ?= \/usr/" ${WORKBASE}/luakit-${PVR}/config.mk
 }
+
