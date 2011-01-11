@@ -2,7 +2,7 @@
 # Copyright (C) 2010 Mattias Fliesberg <mattias.fliesberg@gmail.com>
 # Distributed under the terms of the GNU General Public License v3
 
-export_exlib_phases src_unpack src_prepare src_fetch_extra
+export_exlib_phases src_unpack src_prepare src_fetch_extra src_install
 
 SUMMARY="luakit is a highly configurable, micro-browser framework based on the WebKit web content engine and the GTK+ toolkit"
 DESCRIPTION="
@@ -17,12 +17,16 @@ HOMEPAGE="http://luakit.org/projects/luakit/"
 LICENCES="GPL-3"
 SLOT="0"
 
-DEPENDENCIES="
-  net-libs/webkit-gtk[>=1.2.4]
-  dev-lang/lua
-  dev-lua/luafilesystem
-"
+MYOPTIONS="vim-syntax"
 
+DEPENDENCIES="
+  build+run:
+    net-libs/webkit-gtk[>=1.2.4]
+    dev-lang/lua
+    dev-lua/luafilesystem
+  run:
+    vim-syntax? ( app-editors/vim )
+"
 BUGS_TO="mattias.fliesberg@gmail.com"
 
 luakit_src_fetch_extra() {
@@ -39,3 +43,12 @@ luakit_src_prepare() {
   sed -i "s/PREFIX[ ]\+?=.*/PREFIX ?= \/usr/" ${WORKBASE}/luakit-${PV}/config.mk
 }
 
+luakit_src_install() {
+  default
+  if option vim-syntax; then
+    for t in extras/vim/*; do
+      insinto /usr/share/vim/vimfiles/$t
+      doins extras/luakit.vim
+    done
+  fi
+}
