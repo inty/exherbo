@@ -46,9 +46,10 @@ luakit_src_prepare() {
 luakit_src_install() {
   default
   if option vim-syntax; then
-    for t in extras/vim/*; do
+    cd extras/vim/
+    for t in *; do
       insinto /usr/share/vim/vimfiles/$t
-      doins extras/vim/$t/luakit.vim
+      doins $t/luakit.vim
     done
   fi
 }
