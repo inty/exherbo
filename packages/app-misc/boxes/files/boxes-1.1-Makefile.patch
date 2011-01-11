@@ -1,0 +1,11 @@
+--- Makefile	2006-07-23 20:03:43.000000000 +0200
++++ Makefile.new	2011-01-11 23:23:24.599374469 +0100
+@@ -73,7 +73,7 @@
+ 
+ 
+ # The following line (GLOBALCONF) is the only line you should need to edit!
+-GLOBALCONF = /usr/share/boxes
++GLOBALCONF = /usr/share/boxes/boxes-config
+ BVERSION   = 1.1
+ 
+ SNAPFILE   = boxes-SNAP-$(shell date +%Y%m%d)
