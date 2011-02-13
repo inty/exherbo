@@ -1,7 +1,7 @@
 Inty's Exherbo repo
 ===================
 
-Exheres packages for luakit, rtm, moreutils, dictd, dict etc.
+Exheres packages for luakit, rtm, moreutils, dictd, dict, gcal, boxes etc.
 
 /etc/paludis/repositories/inty.conf:
 

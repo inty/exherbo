@@ -1,0 +1,35 @@
+# vim: ft=sh
+# Copyright (C) 2011 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU General Public License v3
+
+export_exlib_phases src_install
+
+SUMMARY="boxes is a text filter which can draw ASCII art boxes around its input text."
+DESCRIPTION="
+boxes is a text filter which can draw ASCII art boxes around its input text. These boxes may also be removed, even if they have been badly damaged by editing of the text inside. Since boxes may be open on any side, boxes can also be used to create regional comments in any programming language. With the help of an editor macro or mapping, damaged boxes can easily be repaired.
+This is useful for making the function headers in your programming language look better, for spicing up your news postings and emails, or just for decorating your documentation files.
+"
+
+HOMEPAGE="http://boxes.thomasjensen.com/"
+
+DOWNLOADS="http://boxes.thomasjensen.com/download/${PNV}.src.tar.gz"
+
+DEFAULT_SRC_PREPARE_PATCHES=("${FILES}/${PNV}-Makefile.patch")
+
+LICENCES="GPL-3"
+SLOT="0"
+
+MYOPTIONS=""
+
+DEPENDENCIES="
+"
+BUGS_TO="mattias.fliesberg@gmail.com"
+
+boxes_src_install() {
+  dobin src/boxes
+  doman doc/boxes.1
+  dodoc README
+
+  insinto /usr/share/boxes
+  doins boxes-config
+}

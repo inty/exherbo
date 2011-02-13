@@ -1,0 +1,22 @@
+# vim: ft=sh
+# Copyright (C) 2011 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU General Public License v3
+
+SUMMARY="Gcal is a program for calculating and printing calendars."
+DESCRIPTION="
+Gcal, the GNU Gregorian calendar program, displays hybrid and proleptic Julian and Gregorian calendar sheets, respectively, for one month, three months or a whole year. It also displays eternal holiday lists for many countries around the globe and provides very powerful methods to create fixed date lists that can be used for reminding purposes. Gcal can calculate various astronomical data and times of the Sun and the Moon for at pleasure any location; precisely enough for most civil purposes. It further contains a META-TEXT interface that creates input for formatting or displaying systems -- such as LaTeX, or WWW browser programs that visualize HTML. Gcal supports some other calendar systems, for example the Chinese and Japanese calendar, the Hebrew calendar, the civil Islamic calendar
+"
+
+HOMEPAGE="http://directory.fsf.org/project/gcal/"
+
+DOWNLOADS="mirror://gnu/${PN}/${PNV}.tar.gz"
+
+LICENCES="GPL-3"
+SLOT="0"
+
+MYOPTIONS=""
+
+DEPENDENCIES="
+"
+BUGS_TO="mattias.fliesberg@gmail.com"
+
