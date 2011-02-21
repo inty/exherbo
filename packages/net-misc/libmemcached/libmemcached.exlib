@@ -13,6 +13,7 @@ LICENCES="BSD"
 SLOT="0"
 
 DEPENDENCIES="
+  net-misc/memcached
 "
 
 BUGS_TO="mattias.fliesberg@gmail.com"
