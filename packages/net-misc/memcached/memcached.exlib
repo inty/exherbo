@@ -7,7 +7,7 @@ DESCRIPTION="
 "
 
 HOMEPAGE="http://memcached.org/"
-DOWNLOADS="=http://memcached.googlecode.com/files/memcached-${PV}.tar.gz"
+DOWNLOADS="http://memcached.googlecode.com/files/memcached-${PV}.tar.gz"
 
 LICENCES="BSD"
 SLOT="0"
