@@ -1,0 +1,59 @@
+# Copyright 2009 Adriaan Leijnse <adriaan@leijnse.net>
+# Copyright 2011 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU Public License v2
+
+SCM_REPOSITORY="http://subversion.ffado.org/ffado/"
+
+require scons scm-svn
+
+SUMMARY="The FFADO project tries to provide open-source drivers for all FireWire based pro-audio devices."
+DESCRIPTION="
+We try to support any FireWire device available out there. The FFADO codebase is a
+framework that has been built with this in mind. This however doesn't mean that all FireWire devices
+work with FFADO. In order to support a device, we need cooperation from manufacturers, or somebody
+that want's to reverse engineer the protocol.
+"
+HOMEPAGE="http://www.ffado.org"
+DOWNLOADS=""
+
+LICENCES="GPL-2 GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    qt4 [[ description = [ Builds ffado-mixer ] ]]
+    bebob [[ description = [ Support BridgeCo BeBoB chip devices ] ]]
+    fireworks [[ description = [ Support ECHO Audio FireWorks AV/C ] ]]
+    motu [[ description = [ Support MOTU devices ] ]]
+    avc [[ description = [ Add the generic avc part (mainly used by apple) ] ]]
+"
+
+DEPENDENCIES="
+    build+run:
+        sys-apps/dbus
+        dev-cpp/libxml++
+        media-libs/libraw1394
+        media-libs/libiec61883
+        dev-libs/libconfig
+        qt4? (
+            dev-python/PyQt4
+            dev-python/dbus-python
+        )
+    post:
+        qt4? ( x11-apps/xdg-utils )
+"
+
+BUGS_TO="mattias.fliesberg@gmail.com"
+
+WORK="${WORKBASE}/libffado-${PV}/libffado"
+
+src_configure() {
+    echo -e "clean \n exit" | escons \
+        --config=force \
+        PREFIX=/usr \
+        ENABLE_BEBOB=$(option bebob && echo 1 || echo 0) \
+        ENABLE_FIREWORKS=$(option fireworks && echo 1 || echo 0) \
+        ENABLE_MOTU=$(option motu && echo 1 || echo 0) \
+        ENABLE_GENERICAVC=$(option avc && echo 1 || echo 0) \
+        ENABLE_OPTIMIZATIONS=1
+}
+
