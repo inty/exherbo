@@ -1,0 +1,19 @@
+# vim: ft=sh
+# Copyright (C) 2011 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU General Public License v3
+
+SUMMARY="Free & open source, high-performance, distributed memory object caching system"
+DESCRIPTION="
+"
+
+HOMEPAGE="http://memcached.org/"
+DOWNLOADS="http://memcached.googlecode.com/files/memcached-${PV}.tar.gz"
+
+LICENCES="BSD"
+SLOT="0"
+
+DEPENDENCIES="
+"
+
+BUGS_TO="mattias.fliesberg@gmail.com"
+

@@ -1,0 +1,20 @@
+# vim: ft=sh
+# Copyright (C) 2011 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU General Public License v3
+
+SUMMARY="libMemcached is an open source C/C++ client library and tools for the memcached server"
+DESCRIPTION="
+"
+
+HOMEPAGE="http://libmemcached.org/"
+DOWNLOADS="http://launchpad.net/libmemcached/1.0/${PV}/+download/libmemcached-${PV}.tar.gz"
+
+LICENCES="BSD"
+SLOT="0"
+
+DEPENDENCIES="
+  net-misc/memcached
+"
+
+BUGS_TO="mattias.fliesberg@gmail.com"
+
