@@ -24,6 +24,7 @@ DEPENDENCIES="
     net-libs/webkit-gtk[>=1.2.4]
     dev-lang/lua
     dev-lua/luafilesystem
+    dev-libs/unique:1
   run:
     vim-syntax? ( app-editors/vim )
 "
