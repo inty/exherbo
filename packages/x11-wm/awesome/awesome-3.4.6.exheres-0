@@ -1,8 +1,0 @@
-# Copyright 2008, 2009 Fernando J. Pereda
-# Distributed under the terms of the GPLv2
-
-require awesome
-
-SLOT="0"
-PLATFORMS="~amd64 ~ppc64 ~x86"
-
