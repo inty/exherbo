@@ -30,6 +30,10 @@ DEPENDENCIES="
 "
 BUGS_TO="mattias.fliesberg@gmail.com"
 
+DEFAULT_SRC_COMPILE_PARAMS=(
+    DEVELOPMENT_PATHS=0
+)
+
 luakit_src_fetch_extra() {
   edo wget --no-check-certificate -O "${FETCHEDDIR}"/luakit-${PVR}.tar.gz http://github.com/mason-larobina/luakit/tarball/${PVR}
 }
