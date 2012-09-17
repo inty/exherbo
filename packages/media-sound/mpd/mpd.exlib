@@ -1,0 +1,160 @@
+# Copyright 2008 Richard Brown
+# Copyright 2009 Bo Ørsted Andresen
+# Copyright 2009 Thomas Anderson
+# Copyright 2011 Ali Polatel
+# Copyright 2011 Quentin "Sardem FF7" Glidic <sardemff7+exherbo@sardemff7.net>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A flexible, powerful, server-side application for playing music"
+DESCRIPTION="
+Music Player Daemon (MPD) is a flexible, powerful, server-side application for playing music.
+Through plugins and libraries it can play a variety of sound files while being controlled by
+its network protocol.
+"
+HOMEPAGE="http://www.musicpd.org/"
+if ever is_scm; then
+    SCM_REPOSITORY="git://git.musicpd.org/master/mpd.git"
+    require scm-git autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.11 ] ]
+else
+    DOWNLOADS="mirror://sourceforge/musicpd/${PNV}.tar.bz2"
+    UPSTREAM_RELEASE_NOTES="http://sourceforge.net/projects/musicpd/files/${PN}/${PV}/${PNV}-release-notes.txt/download"
+fi
+
+LICENCES="GPL-2"
+SLOT="0"
+MYOPTIONS="alsa avahi doc ipv6 libsamplerate ogg openal pulseaudio sndfile tcpd
+    curl      [[ description = [ Support obtaining song data via HTTP ] ]]
+    ffado     [[ description = [ Free FireWire Audio Drivers support ] ]]
+    id3       [[ description = [ Support for ID3 tags ] ]]
+    jack      [[ description = [ Enable jack-audio-connection-kit audio output ] ]]
+    lastfm    [[ description = [ Enable support for last.fm radio ]
+                 requires = curl
+              ]]
+    mms       [[ description = [ Microsoft Media Server protocol support ] ]]
+    shout     [[ description = [ Enable support for streaming through shout (mp3, and ogg if ogg is enabled) ] ]]
+    sqlite    [[ description = [ Enable support for storing the MPD database in an Sqlite database ] ]]
+    zip       [[ description = [ zip archive support ] ]]
+
+    (
+        mp3 mikmod musepack wavpack
+        audiofile [[ description = [ Enable audiofile support, enables wave support ] ]]
+        ffmpeg    [[ description = [ Enable the ffmpeg input plugin, allowing you to play all audio formats supported by ffmpeg ] ]]
+        modplug   [[ description = [ mod-like file format support ] ]]
+        ( flac shout vorbis ) [[ requires = ogg ]]
+    ) [[ number-selected = at-least-one ]]
+"
+
+DEPENDENCIES="
+    build:
+        dev-util/pkg-config
+        doc? (
+            app-text/docbook-xml-dtd:4.2
+            app-text/xmlto
+            app-doc/doxygen
+        )
+    build+run:
+        app-arch/bzip2
+        dev-libs/glib:2[>=2.4]
+        alsa? ( sys-sound/alsa-lib )
+        audiofile? ( media-libs/audiofile[>=0.1.7] )
+        avahi? ( net-dns/avahi )
+        curl? ( net-misc/curl )
+        ffado? ( media-libs/libffado )
+        ffmpeg? ( virtual/ffmpeg )
+        flac? ( media-libs/flac[>=1.1][ogg?] )
+        id3? ( media-libs/libid3tag )
+        jack? ( media-sound/jack-audio-connection-kit )
+        libsamplerate? ( media-libs/libsamplerate[>=0.0.15] )
+        mms? ( media-libs/libmms[>=0.4] )
+        mikmod? ( media-libs/libmikmod )
+        modplug? ( media-libs/libmodplug )
+        mp3? (
+            media-libs/libmad
+            media-sound/lame
+        )
+        musepack? ( media-libs/libmpcdec )
+        ogg? ( media-libs/libogg )
+        openal? ( media-libs/openal )
+        pulseaudio? ( media-sound/pulseaudio )
+        shout? ( media-libs/libshout )
+        sndfile? ( media-libs/libsndfile )
+        sqlite? ( dev-db/sqlite:3 )
+        tcpd? ( sys-apps/tcp-wrappers[ipv6?] )
+        vorbis? ( media-libs/libvorbis )
+        wavpack? ( media-sound/wavpack )
+        zip? ( dev-libs/zziplib[>=0.13] )
+    suggestion:
+        media-sound/ario       [[ description = [ Provides rhythmbox-like client ] ]]
+        media-sound/gmpc       [[ description = [ Provides fast and fully featured GTK-based client ] ]]
+        media-sound/mpc        [[ description = [ Provides command line client ] ]]
+        media-sound/mpdcron    [[ description = [ Executes scripts based on mpd's idle events ] ]]
+        media-sound/ncmpc      [[ description = [ Provides ncurses based command line client ] ]]
+        media-sound/pms        [[ description = [ Provides an alternative ncurses based command line client ] ]]
+        media-sound/qmpdclient [[ description = [ Provides simple QT client ] ]]
+        media-sound/sonata     [[ description = [ Provides an elegant GTK-based client ] ]]
+        sys-sound/oss          [[ description = [ Provides an alternative sound architecture instead of ALSA ] ]]
+"
+
+# mvp is Hauppauge Media MVP
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --enable-bzip2
+    --enable-fifo
+    --enable-httpd-output
+    --enable-inotify
+    --enable-oss
+    --enable-pipe-output
+    --enable-recorder-output
+    --enable-tcp
+    --enable-un
+    --enable-wave-encoder
+    --disable-aac # Use ffmpeg instead
+    --disable-ao
+    --disable-fluidsynth
+    --disable-gme
+    --disable-iso9660
+    --disable-mpg123
+    --disable-mvp
+    --disable-sidplay
+    --disable-test
+    --disable-twolame-encoder
+    --disable-werror
+    --disable-wildmidi
+    --without-tremor
+)
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
+    alsa
+    audiofile
+    curl
+    'doc documentation'
+    ffado
+    ffmpeg
+    flac
+    id3
+    ipv6
+    jack
+    lastfm
+    'libsamplerate lsr'
+    mms
+    mikmod
+    modplug
+    'mp3 mad'
+    'mp3 lame-encoder'
+    'musepack mpc'
+    vorbis
+    'vorbis vorbis-encoder'
+    openal
+    'pulseaudio pulse'
+    shout
+    sndfile
+    sqlite
+    'tcpd libwrap'
+    wavpack
+    'zip zzip'
+)
+
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=(
+    'avahi zeroconf avahi'
+)
+
