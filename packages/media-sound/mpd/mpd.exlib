@@ -60,7 +60,7 @@ DEPENDENCIES="
         avahi? ( net-dns/avahi )
         curl? ( net-misc/curl )
         ffado? ( media-libs/libffado )
-        ffmpeg? ( virtual/ffmpeg )
+        ffmpeg? ( media/ffmpeg )
         flac? ( media-libs/flac[>=1.1][ogg?] )
         id3? ( media-libs/libid3tag )
         jack? ( media-sound/jack-audio-connection-kit )
