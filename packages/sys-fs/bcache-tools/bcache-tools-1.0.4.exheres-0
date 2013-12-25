@@ -1,0 +1,7 @@
+# vim: ft=sh
+# Copyright (C) 2013 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU General Public License v3
+
+require bcache-tools
+
+PLATFORMS="~amd64"

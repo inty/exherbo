@@ -1,0 +1,35 @@
+# vim: ft=sh
+# Copyright (C) 2013 Mattias Fliesberg <mattias.fliesberg@gmail.com>
+# Distributed under the terms of the GNU General Public License v3
+
+export_exlib_phases src_fetch_extra src_unpack src_install
+
+SUMMARY="bcache-tools, part of the bcache hybrid storage project (features, debian packaging)"
+DESCRIPTION="
+"
+
+HOMEPAGE="https://github.com/g2p/bcache-tools"
+
+LICENCES="GPL-3"
+SLOT="0"
+
+MYOPTIONS=""
+
+DEPENDENCIES="
+  build+run:
+  run:
+"
+BUGS_TO="mattias.fliesberg@gmail.com"
+
+bcache-tools_src_fetch_extra() {
+  edo wget --no-check-certificate -O "${FETCHEDDIR}"/bcache-tools-v${PVR}.tar.gz http://github.com/g2p/bcache-tools/archive/v${PVR}.tar.gz
+}
+
+bcache-tools_src_unpack() {
+  tar xzf "${FETCHEDDIR}/bcache-tools-v${PVR}.tar.gz" -C "${WORKBASE}" || die
+}
+
+bcache-tools_src_install() {
+    mkdir -p ${IMAGE}/sbin/
+    install -m0755 make-bcache bcache-super-show ${IMAGE}/sbin/
+}
